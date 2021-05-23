@@ -11,6 +11,7 @@ public class JobTest {
     Job test_job2;
     Job test_job3;
     Job test_job4;
+    Job test_job5;
 
     @Before
     public void createJobObject() {
@@ -18,6 +19,7 @@ public class JobTest {
         test_job2 = new Job();
         test_job3 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
         test_job4 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+        test_job5 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency(""));
     }
 
     @Test
@@ -34,4 +36,25 @@ public class JobTest {
     public void testJobsForEquality() {
         assertNotEquals("test_job3 should not equal test_job4", test_job3, test_job4 );
     }
+
+    @Test
+    public void firstJobsToStringTest(){
+        assertEquals("ID: 23 \n" +
+        "Name: Product tester\n" +
+                "Employer: ACME\n" +
+                "Location: Desert\n" +
+                "Position Type: Quality control\n" +
+                "Core Competency: Persistence" , test_job3.toString());
+    }
+
+    @Test
+    public void testForEmptyFields(){
+        assertEquals("ID: 10 \n" +
+        "Name: Product tester\n" +
+                "Employer: ACME\n" +
+                "Location: Desert\n" +
+                "Position Type: Quality control\n" +
+                "Core Competency: Data not available" , test_job5.toString());
+    }
+
 }

@@ -1,5 +1,6 @@
 package org.launchcode.techjobs_oo;
 
+import java.util.ArrayList;
 import java.util.Objects;
 
 public class Job {
@@ -12,6 +13,22 @@ public class Job {
     private Location location;
     private PositionType positionType;
     private CoreCompetency coreCompetency;
+
+    public String toString() {
+            if(this.name == "") {
+                this.name = "Data not available";
+            }
+            if(this.getEmployer().getValue() == "") {
+                this.getEmployer().setValue("Data not available");
+            }
+            if(this.getPositionType().getValue() == "") {
+                this.getPositionType().setValue("Data not available");
+            }
+            if(this.getCoreCompetency().getValue() == "") {
+                this.getCoreCompetency().setValue("Data not available");
+            }
+            return "ID: " + this.getId() + " \nName: " + this.getName() + "\nEmployer: " + this.getEmployer() + "\nLocation: " + this.getLocation() + "\nPosition Type: " + this.getPositionType() + "\nCore Competency: " + this.getCoreCompetency();
+        }
 
     // TODO: Add two constructors - one to initialize a unique ID and a second to initialize the
     //  other five fields. The second constructor should also call the first in order to initialize
@@ -29,6 +46,7 @@ public class Job {
         this.positionType = positionType;
         this.coreCompetency = coreCompetency;
     }
+
     // TODO: Add custom equals and hashCode methods. Consider two Job objects "equal" when their id fields
     //  match.
 
@@ -55,7 +73,6 @@ public class Job {
     public String getName() {
         return name;
     }
-
     public void setName(String name) {
         this.name = name;
     }
@@ -63,7 +80,6 @@ public class Job {
     public Employer getEmployer() {
         return employer;
     }
-
     public void setEmployer(Employer employer) {
         this.employer = employer;
     }
@@ -71,7 +87,6 @@ public class Job {
     public Location getLocation() {
         return location;
     }
-
     public void setLocation(Location location) {
         this.location = location;
     }
@@ -79,10 +94,14 @@ public class Job {
     public PositionType getPositionType() {
         return positionType;
     }
-
     public void setPositionType(PositionType positionType) {
         this.positionType = positionType;
     }
 
-
+    public CoreCompetency getCoreCompetency() {
+        return coreCompetency;
+    }
+    public void setCoreCompetency(CoreCompetency coreCompetency) {
+        this.coreCompetency = coreCompetency;
+    }
 }
